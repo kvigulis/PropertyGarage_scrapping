@@ -10,12 +10,14 @@ from scrapping.models import ResultProperty
 from django.utils import timezone
 
 import time
+from django.conf import settings
+from os.path import join as pjoin
 
 def scap_rightmove(url):
     current_date = timezone.now()
     options = Options()
     options.headless = False
-    driver = webdriver.Chrome("/home/karlis/chromedriver", chrome_options=options)
+    driver = webdriver.Chrome(pjoin(settings.BASE_DIR,"chromedriver"), chrome_options=options)
 
     driver.implicitly_wait(25)
 
